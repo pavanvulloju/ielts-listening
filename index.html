@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="container ">
+    <div
+      class="container my-3 border rounded-3 text-secondary-emphasis bg-secondary-subtle border border-secondary-subtle">
+      <div class="container text-center p-3">
+
+        <div class="row">
+          <div class="col-8">
+            <h1>IELTS Listening Answer Sheet</h1>
+          </div>
+          <div class="col">
+            <img src="https://cdn-icons-png.flaticon.com/512/189/189638.png" width="50px" alt="start" id="startButton"
+              onclick="startTimer()" class="mx-3" />
+
+            <img src="https://cdn-icons-png.flaticon.com/512/4181/4181163.png" width="50px" alt="pause" id="pauseButton"
+              onclick="pauseTimer()" class="mx-3" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- For User Name (Input), Display date & Time of writing -->
+    <div class="container border rounded-3 p-3 mt-3">
+      <div class="row p-3 g-3">
+        <div
+          class="col m-2 border rounded-3 text-center text-warning-emphasis bg-warning-subtle border border-warning-subtle">
+          <div class="row-2 p-2 my-2 ">
+
+            <input class="form-control form-control" type="text" placeholder="Enter your Name"
+              aria-label=".form-control example" />
+
+            <div id="datetime" class="display-5 mt-3"></div>
+          </div>
+
+        </div>
+        <div
+          class="col border p-2 m-2 rounded-3 text-center text-danger-emphasis bg-danger-subtle border border-danger-subtle">
+          <div class="mt-3">Time Remaining</div>
+          <div id="timer" class="display-3 mt-2">00:00</div>
+          <audio id="timeUpSound">
+            <source src="https://cdn.pixabay.com/download/audio/2021/09/27/audio_91211934db.mp3" type="audio/mpeg">
+            <!-- Add additional <source> tags for different audio formats (e.g., ogg, wav) for better cross-browser support -->
+          </audio>
+        </div>
+        <div
+          class="col border p-2 m-2 rounded-3 text-center text-primary-emphasis bg-primary-subtle border border-primary-subtle">
+          <div class="mt-3">Total Questions Attempted</div>
+          <div class="display-3 my-2"><span id="filledCount">0</span>/40</div>
+        </div>
+
+        <div
+          class="col border p-2 m-2 rounded-3 text-center text-info-emphasis bg-info-subtle border border-info-subtle">
+          <div class="mt-3">Total Correct Answers</div>
+          <div class="display-3 my-2"><span id="totalScore">0</span>/40</div>
+        </div>
+      </div>
+    </div>
+
+
+    <form action="" id="scoreForm">
+    <!-- Input all your answers here -->
+    <div class="container my-3 border rounded-3">
+      <div class="container text-center">
+        <div class="row my-2">
+          <!-- removed Border for below col -->
+          <div class="col m-2 rounded-3">
+            <div class="container text-center">
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>1.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q1" value="yes" id="success-outlined1" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined1">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q1" value="no" id="danger-outlined1" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined1">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>2.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q2" value="yes" id="success-outlined2" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined2">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q2" value="no" id="danger-outlined2" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined2">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>3.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q3" value="yes" id="success-outlined3" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined3">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q3" value="no" id="danger-outlined3" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined3">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>4.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q4" value="yes" id="success-outlined4" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined4">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q4" value="no" id="danger-outlined4" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined4">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>5.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q5" value="yes" id="success-outlined5" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined5">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q5" value="no" id="danger-outlined5" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined5">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>6.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q6" value="yes" id="success-outlined6" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined6">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q6" value="no" id="danger-outlined6" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined6">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>7.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q7" value="yes" id="success-outlined7" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined7">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q7" value="no" id="danger-outlined7" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined7">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>8.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q8" value="yes" id="success-outlined8" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined8">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q8" value="no" id="danger-outlined8" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined8">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>9.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q9" value="yes" id="success-outlined9" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined9">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q9" value="no" id="danger-outlined9" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined9">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>10.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q10" value="yes" id="success-outlined10" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined10">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q10" value="no" id="danger-outlined10" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined10">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>11.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q11" value="yes" id="success-outlined11" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined11">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q11" value="no" id="danger-outlined11" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined11">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>12.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q12" value="yes" id="success-outlined12" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined12">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q12" value="no" id="danger-outlined12" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined12">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>13.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q13" value="yes" id="success-outlined13" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined13">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q13" value="no" id="danger-outlined13" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined13">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>14.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q14" value="yes" id="success-outlined14" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined14">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q14" value="no" id="danger-outlined14" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined14">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>15.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q15" value="yes" id="success-outlined15" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined15">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q15" value="no" id="danger-outlined15" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined15">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>16.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q16" value="yes" id="success-outlined16" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined16">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q16" value="no" id="danger-outlined16" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined16">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>17.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q17" value="yes" id="success-outlined17" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined17">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q17" value="no" id="danger-outlined17" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined17">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>18.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q18" value="yes" id="success-outlined18" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined18">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q18" value="no" id="danger-outlined18" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined18">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>19.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q19" value="yes" id="success-outlined19" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined19">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q19" value="no" id="danger-outlined19" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined19">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>20.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q20" value="yes" id="success-outlined20" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined20">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q20" value="no" id="danger-outlined20" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined20">❌</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+
+          <!-- This is Second Column -->
+          <!-- removed Border for below col -->
+          <div class="col m-2 rounded-3">
+            <div class="container text-center">
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>21.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q21" value="yes" id="success-outlined21" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined21">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q21" value="no" id="danger-outlined21" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined21">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>22.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q22" value="yes" id="success-outlined22" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined22">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q22" value="no" id="danger-outlined22" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined22">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>23.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q23" value="yes" id="success-outlined23" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined23">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q23" value="no" id="danger-outlined23" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined23">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>24.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q24" value="yes" id="success-outlined24" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined24">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q24" value="no" id="danger-outlined24" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined24">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>25.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q25" value="yes" id="success-outlined25" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined25">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q25" value="no" id="danger-outlined25" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined25">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>26.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q26" value="yes" id="success-outlined26" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined26">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q26" value="no" id="danger-outlined26" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined26">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>27.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q27" value="yes" id="success-outlined27" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined27">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q27" value="no" id="danger-outlined27" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined27">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>28.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q28" value="yes" id="success-outlined28" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined28">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q28" value="no" id="danger-outlined28" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined28">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>29.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q29" value="yes" id="success-outlined29" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined29">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q29" value="no" id="danger-outlined29" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined29">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>30.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q30" value="yes" id="success-outlined30" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined30">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q30" value="no" id="danger-outlined30" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined30">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>31.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q31" value="yes" id="success-outlined31" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined31">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q31" value="no" id="danger-outlined31" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined31">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>32.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q32" value="yes" id="success-outlined32" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined32">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q32" value="no" id="danger-outlined32" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined32">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>33.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q33" value="yes" id="success-outlined33" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined33">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q33" value="no" id="danger-outlined33" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined33">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>34.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q34" value="yes" id="success-outlined34" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined34">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q34" value="no" id="danger-outlined34" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined34">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>35.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q35" value="yes" id="success-outlined35" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined35">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q35" value="no" id="danger-outlined35" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined35">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>36.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q36" value="yes" id="success-outlined36" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined36">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q36" value="no" id="danger-outlined36" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined36">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>37.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q37" value="yes" id="success-outlined37" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined37">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q37" value="no" id="danger-outlined37" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined37">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>38.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q38" value="yes" id="success-outlined38" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined38">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q38" value="no" id="danger-outlined38" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined38">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>39.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q39" value="yes" id="success-outlined39" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined39">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q39" value="no" id="danger-outlined39" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined39">❌</label>
+                </div>
+              </div>
+              <div class="row my-3 align-items-center">
+                <div class="col-1">
+                  <h5>40.</h5>
+                </div>
+                <div class="col-8">
+                  <input class="form-control form-control" type="text" placeholder="Input Your Answer here"
+                    aria-label=".form-control example" />
+                </div>
+                <div class="col-3">
+                  <input type="radio" class="btn-check" name="q40" value="yes" id="success-outlined40" autocomplete="off">
+                  <label class="btn btn-outline-success" for="success-outlined40">✔️</label>
+
+                  <input type="radio" class="btn-check" name="q40" value="no" id="danger-outlined40" autocomplete="off">
+                  <label class="btn btn-outline-danger" for="danger-outlined40">❌</label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  </div>
+
+  <!-- Timer Function -->
+  <script>
+
+    let remainingSeconds = 2400; // 40 minutes (40 minutes * 60 seconds)
+    let timerInterval; // variable to store the interval ID
+
+    function updateTimer() {
+      const minutes = Math.floor(remainingSeconds / 60);
+      const seconds = remainingSeconds % 60;
+
+      const timerDiv = document.getElementById("timer");
+      const timeUpSound = document.getElementById('timeUpSound');
+      timerDiv.textContent = `${minutes.toString().padStart(2, "0")}:${seconds
+        .toString()
+        .padStart(2, "0")}`;
+
+      if (remainingSeconds > 0) {
+        remainingSeconds--;
+      } else {
+        clearInterval(timerInterval);
+        timerDiv.textContent = "Time's up!";
+        timeUpSound.play();
+        document.getElementById("pauseButton").disabled = true;
+
+      }
+    }
+
+    function startTimer() {
+      updateTimer(); // Call it immediately to display the initial time
+      timerInterval = setInterval(updateTimer, 1000); // Update the timer every second
+
+      document.getElementById("startButton").disabled = true;
+      document.getElementById("pauseButton").disabled = false;
+    }
+
+    function pauseTimer() {
+      clearInterval(timerInterval); // Pause the timer by clearing the interval
+      document.getElementById("startButton").disabled = false;
+      document.getElementById("pauseButton").disabled = true;
+    }
+  </script>
+
+<!-- Date Function To Be displayed on Screen -->
+  <script>
+    function updateDateTime() {
+      const now = new Date();
+      const options = { year: "numeric", month: "short", day: "numeric" };
+      const date = now.toLocaleDateString(undefined, options);
+
+      const dateDiv = document.getElementById("datetime");
+      dateDiv.textContent = date;
+    }
+
+    // Call the updateDateTime function initially to display the date and time immediately
+    updateDateTime();
+
+    // Update the date and time every second
+    setInterval(updateDateTime, 1000);
+
+    function countFilledFields() {
+      const inputFields = document.querySelectorAll('.form-control');
+      let filledCount = 0;
+
+      inputFields.forEach((inputField) => {
+        if (inputField.value.trim() !== '') {
+          filledCount++;
+        }
+      });
+
+      return filledCount;
+    }
+
+    // Update the count in real-time whenever an input field changes
+    document.addEventListener('input', () => {
+      const filledCount = countFilledFields();
+      document.getElementById('filledCount').textContent = filledCount;
+    });
+  </script>
+
+<!-- Total Score Calucation Function From ChatGPT -->
+  <script>
+    // Function to calculate the total score for "Yes" options
+    function calculateTotalScore() {
+      const scoreForm = document.getElementById('scoreForm');
+      const yesRadioButtons = scoreForm.querySelectorAll('input[type="radio"][value="yes"]');
+      let totalScore = 0;
+
+      yesRadioButtons.forEach((radioButton) => {
+        if (radioButton.checked) {
+          totalScore++;
+        }
+      });
+
+      return totalScore;
+    }
+
+    // Update the total score in real-time whenever a "Yes" radio button is selected
+    document.addEventListener('change', () => {
+      const totalScore = calculateTotalScore();
+      document.getElementById('totalScore').textContent = totalScore;
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBno3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>
